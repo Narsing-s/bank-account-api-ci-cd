@@ -11,7 +11,7 @@ on:
 jobs:
   call-mule-deploy-prod:
     # IMPORTANT: This path and extension must match the called repo's filename exactly.
-    uses: Narsing-s/apice-github-actions-common/.github/workflows/deploy_prod.yaml@v1.0.0
+    uses: Narsing-s/github-actions/.github/workflows/deploy_prod.yaml@v1.0.0
     # Inherit all repository secrets into the called workflow (if it expects them)
     secrets: inherit
     with:
