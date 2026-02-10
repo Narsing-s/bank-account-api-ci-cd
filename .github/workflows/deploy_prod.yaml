@@ -22,6 +22,7 @@ jobs:
       release_version: ${{ github.event.inputs.release_number }}
       repoName: "Narsing-s/bank-account-api" 
       ref: "main" 
+      regions: "az_west=active,az_east=passive,az_westb=active"
       business_group_name: "Test"
       app_mule_environment: "sandbox"
       secrets_environment: "prod"
