@@ -16,7 +16,7 @@ on:
 # call the common flow
 jobs:
   call-mule-deploy-prod:
-    uses: Narsing-s/apice-github-actions-common/.github/workflows/deploy_prod.yml@v1.0.0
+    uses: uses: Narsing-s/apice-github-actions-common/.github/workflows/deploy_prod.yaml@v1.0.0
     secrets: inherit
     with:
       release_version: ${{ github.event.inputs.release_number }}
