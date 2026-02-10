@@ -1,8 +1,3 @@
-#
-# This action is triggered manually. Either a specific release tag to deploy to production is specified
-# or the latest release will be deployed.
-#
-
 name: "Deploy Release to PROD"
 
 on:
@@ -15,9 +10,7 @@ on:
 
 jobs:
   call-mule-deploy-prod:
-    # 👇 FIXED: remove the duplicated "uses:"
     uses: Narsing-s/apice-github-actions-common/.github/workflows/deploy_prod.yaml@v1.0.0
-    # If the called workflow expects specific secrets, secrets: inherit is fine
     secrets: inherit
     with:
       release_version: ${{ github.event.inputs.release_number }}
@@ -31,5 +24,4 @@ jobs:
       root_context: "/common/Test/"
       api_type: "internal"
       cicd_enabled: "true"
-      # ----- application resource configuration -----
       app_replicas: "2"
