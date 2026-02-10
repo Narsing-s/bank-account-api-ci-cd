@@ -1,0 +1,33 @@
+#
+# This action is triggered manually. Either a specific release tag to deploy to production is specified or the
+# latest release will be deployed.
+#
+ 
+name: "Deploy Release to PROD"
+# Controls when the action will run.
+on:
+  workflow_dispatch:
+    inputs:
+      release_number:
+        description: 'Version to Release (Ex: v1.0.0). Default is LATEST.'
+        required: false 
+        default: 'LATEST'
+ 
+# call the common flow
+jobs:
+  call-mule-deploy-prod:
+    uses: Narsing-s/apice-github-actions-common/.github/workflows/deploy_prod.yml@v1.0.0
+    secrets: inherit
+    with:
+      release_version: ${{ github.event.inputs.release_number }}
+      repoName: "Narsing-s/bank-account-api" 
+      ref: "main" 
+      business_group_name: "Test"
+      app_mule_environment: "sandbox"
+      secrets_environment: "prod"
+      api_name: "bank-account-api"
+      root_context: "/common/Test/"
+      api_type: "internal"     
+      cicd_enabled: "true"      
+      #####-----> application resource configuration <-----#####
+      app_replicas: "2" 
