@@ -10,7 +10,9 @@ on:
 
 jobs:
   call-mule-deploy-prod:
+    # IMPORTANT: This path and extension must match the called repo's filename exactly.
     uses: Narsing-s/apice-github-actions-common/.github/workflows/deploy_prod.yaml@v1.0.0
+    # Inherit all repository secrets into the called workflow (if it expects them)
     secrets: inherit
     with:
       release_version: ${{ github.event.inputs.release_number }}
@@ -23,5 +25,5 @@ jobs:
       api_name: "bank-account-api"
       root_context: "/common/Test/"
       api_type: "internal"
-      cicd_enabled: "true"
+      cicd_enabled: "true"      # keep as string; inputs are typed as string below
       app_replicas: "2"
