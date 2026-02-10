@@ -1,4 +1,4 @@
-name: "Deploy Release to PROD"
+name: "Deploy Release to DEV"
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ jobs:
       regions: "az_west=active,az_east=passive,az_westb=active"
       business_group_name: "Test"
       app_mule_environment: "sandbox"
-      secrets_environment: "prod"
+      secrets_environment: "DEV"
       api_name: "bank-account-api"
       root_context: "/common/Test/"
       api_type: "internal"
